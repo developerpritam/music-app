@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        
+        /* body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #333;
+            color: #fff;
+        } */
+
+        /* ============= todo list app css ============ */
+        /* .hidden {
+            display: none;
+        } */
+        /* ============= todo list app css ============ */
+
+        /* ============== age cal css ============== */
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Roboto', sans-serif;
+        }
+  
+            /* main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 50px;
+            height: 100vh;
+
+        } */
+
+        /* label{
+            font-size: 20px;
+            font-weight: 600;
+        }  */
+
+        main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgba(128, 128, 128, .2);
+}
+
+.music-container {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    width: 320px;
+}
+
+.music-container::after {
+    content: "";
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background-image: linear-gradient(to right, rgba(255, 0, 0, .7), rgba(0, 128, 0, .7), rgba(0, 0, 255, .7));
+    background-size: 400%;
+    animation: toplineanim 15s ease-in-out alternate infinite;
+    top: 0;
+    left: 0;
+}
+
+@keyframes toplineanim {
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%; 
+    }
+    100%{
+        background-position: 0% 50%; 
+    }
+}
+
+
+.img-container {
+    margin: 30px 0;
+}
+.artist {
+    margin-top: 12px;
+    font-weight: 400;
+}
+.music-controls {
+    display: flex;
+    justify-content: space-around;
+    /* align-items: center; */
+}
+.img-container img {
+    border-radius: 50%;
+    height: 230px;
+    width: 230px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.music-controls i{
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+i.fa-play,
+i.fa-pause {
+    height: 60px;
+    width: 60px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 50%;
+}
+
+
+/* img{
+    
+} */
+
+.music-rotate{
+    animation: musicrotate 7s linear infinite forwards;
+}
+
+@keyframes musicrotate {
+    0%{
+        transform: rotate(0deg);
+    }100%{
+        transform: rotate(360deg);
+    }
+}
+
+.box-shadow-play{
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset !important;
+}
+
+::selection{
+    user-select: none;
+}
+
+/* progress style */
+.progressbar_container{
+width: 100%;
+height: auto;
+padding: 1rem 0;
+}
+
+.progress_div {
+    position: relative;
+    height: 3px;
+    width: 100%;
+    background-color: #0000000d;
+    border-radius: 2px;
+    /* transition: .3s; */
+}
+
+.progress_duration_meter {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+div#progress {
+    position: absolute;
+    background: #000;
+    height: 3px;
+    width: 0;
+    border-radius: 2px;  
+    /* transition: .3s; */
+
+}
+div#progress::after{
+content: "";
+position: absolute;
+height: 10px;
+width: 10px;
+background: #000;
+top: -4px;
+right: -2px;
+border-radius: 50%;
+transition: .3s;
+}
+
+div#progress:hover::after{
+    transform: scale(1.3);
+    background: #333;
+  
+}
+
+
+.dark_lightmode {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 25px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    height: 37px;
+    width: 37px;
+    /* text-align: center; */
+    /* line-height: 30px; */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-dark .music-container {
+    color: #fff;
+    background: #151414;
+
+}
+
+.add-dark .progress_div {
+    background: #ffffff1f;
+}
+
+.add-dark div#progress::after {
+    background: #fff;
+}
+
+.add-dark div#progress{
+    background: #fff;
+}
+
+.add-dark i.fa-play,
+.add-dark i.fa-pause {
+    background: #ffffff1f;
+}
+
+.add-dark .box-shadow-play{
+    box-shadow: none !important;
+}
+
+.add-dark main {
+    background-color: #39393a;
+}
+
+.add-dark div#dark-mode-btn {
+    background: darkgray;
+}
+
+.add-dark .music-container::after{
+    content: none;
+}
+
+    </style>
+</head>
+
+<body>
+    <main>
+    <!-- temprature converter html start -->
+    <!-- <form id="tempCalc" onsubmit="calculateTemp(); return false">
+        <label for="temp">Please enter the temprature you'd like to convert</label><br />
+        <input type="number" name="temp" id="temp" placeholder="Type Number">
+
+        <select name="temp_diff" id="temp_diff">
+            <option value="cel">°Celsius</option>
+            <option value="fah">°Fahrenheit</option>
+        </select><br /><br />
+
+        <input type="submit" name="temp">
+        <span id="resultContainer"></span>
+    </form> -->
+    <!-- temprature converter html end -->
+
+   
+    <!-- ================ placeholder image generator =============== -->
+    <!-- <h2>Placeholder Image Path Generator</h2><br>
+    <label for="selectImage">Image Size:
+    <select id="selectImage">
+        <option value="150x50" disabled selected>Select Image Size</option>
+        <option value="150x50">Small (150x50)</option>
+        <option value="200x200">Medium (200x200)</option>
+        <option value="250x100">Medium (250x100)</option>
+        <option value="350x150">Medium (350x150)</option>
+        <option value="400x400">Large Square (400x400)</option>
+        <option value="550x350">Large (550x350)</option>
+        <option value="600x400">Large (600x400)</option>
+        <option value="800x600">X-Large (800x600)</option>
+        <option value="1920x1080">Full HD (1920x1080)</option>
+    </select>
+</label>
+    <br>
+    <div class="parent">
+        <label for="nameOnImage">Text on Image: </label><input type="text" id="nameOnImage">
+    </div><br>
+
+    <div class="parent">
+        <label for="backgroundColor">Color of Background: </label><input type="color" id="backgroundColor">
+    </div><br>
+
+    <div class="parent">
+        <label for="textColor">Color of Text: </label><input type="color" id="textColor">
+    </div><br>
+
+    <div class="container">
+        <img src="" alt="" download="f" target="_blank">
+        <a href="" class="download" download="f" target="_blank">Click to Download</a>
+        <br />
+        <label for="urlPath"></label>
+        <br>
+        <textarea name="" id="urlPath" cols="40" rows="3" placeholder=" Link will be available here"></textarea>
+    </div> -->
+
+    <!-- ================ placeholder image generator =============== -->
+
+    
+        <!-- ======== controls ======= -->
+
+
+
+        <!-- <h2>Flowers</h2>
+        <h3>Miley Cyrus</h3>
+        <div class="img-container">
+            <img src="img/MILEY_CYRUS_FLOWERS_720x.webp" alt="">
+        </div>
+        <audio src="music/song2.mp3"></audio> -->
+
+        <!-- ======== controls ======= -->
+        <!-- <div class="music-controls">
+            <i class="fa-solid fa-backward" id="prev" title="Previous"></i>
+            <i class="fa-solid fa-play" id="play" title="Play"></i>
+            <i class="fa-solid fa-pause" id="pause" title="Pause"></i>
+            <i class="fa-solid fa-forward" id="next" title="Next"></i>
+        </div> -->
+        <!-- ======== controls ======= -->
+
+
+
+<!-- 
+        <h2>Shot After Shot</h2>
+        <h3>Juiicy 2xs</h3>
+        <div class="img-container">
+            <img src="img/Screenshot_6.png" alt="">
+        </div>
+        <audio src="music/song3.mp3"></audio> -->
+
+        <!-- ======== controls ======= -->
+        <!-- <div class="music-controls">
+            <i class="fa-solid fa-backward" id="prev" title="Previous"></i>
+            <i class="fa-solid fa-play" id="play" title="Play"></i>
+            <i class="fa-solid fa-pause" id="pause" title="Pause"></i>
+            <i class="fa-solid fa-forward" id="next" title="Next"></i>
+        </div> -->
+        <!-- ======== controls ======= -->
+        
+        <div class="dark_lightmode" id="dark-mode-btn">
+            <!-- <i class="fa-solid fa-moon" id="dark-mode"></i> -->
+            <!-- <i class="fa-solid fa-lightbulb-on" ></i> -->
+            <i class="fa-solid fa-sun" id="light-mode"></i>
+        </div>
+    <div class="music-container">
+        <h2 class="music-name">Calm Down</h2>
+        <p class="artist">Rema, Selena Gomez</p>
+        <div class="img-container">
+            <img src="img/ab67616d00001e02100d54a57eac5423f578d0d7.jpg" alt="">
+        </div>
+        <audio src="music/song.mp3"></audio>
+
+        <!-- =========== Progress bar =========== -->
+        <div class="progressbar_container" id="progressbar_container">
+            <div class="progress_duration_meter">
+                <div id="current_time"></div>
+                <div id="duration">2:44</div>
+            </div>
+            <div id="progress_div" class="progress_div">
+                <div id="progress" class="progress"></div>
+            </div>
+        </div>
+
+        <!-- ======== controls ======= -->
+        <div class="music-controls">
+            <i class="fa-solid fa-backward" id="prev" title="Previous"></i>
+            <i class="fa-solid fa-play" id="play" title="Play"></i>
+            <!-- <i class="fa-solid fa-pause" id="pause" title="Pause"></i> -->
+            <i class="fa-solid fa-forward" id="next" title="Next"></i>
+        </div>
+        </div>
+
+
+    </main>
+    <script>
+
+        const music = document.querySelector('audio');
+        const playMusic = document.getElementById('play');
+        const musicCoverImg = document.querySelector('img');
+        const musicName = document.querySelector('.music-name');
+        const artist = document.querySelector('.artist');
+        const prev = document.querySelector('#prev');
+        const next = document.querySelector('#next');
+        let darkMode = document.querySelector('#dark-mode-btn');
+        let moon = document.querySelector('#dark-mode');
+        let light = document.querySelector('#light-mode');
+
+        let progress = document.getElementById('progress');
+        let total_duration = document.getElementById('duration');
+        let current_time = document.getElementById('current_time');
+        let progress_div = document.getElementById('progress_div');
+        let wholeBody = document.querySelector('body');
+
+
+        let isPlaying = false;
+
+        const songs = [
+        {
+            name: "song1",
+            title: "Calm Down",
+            artist: "Rema, Selena Gomez",
+        },
+        {
+            name: "song2",
+            title: "Flowers",
+            artist: "Miley Cyrus",
+        },
+        {
+            name: "song3",
+            title: "Shot After Shot",
+            artist: "Juiicy 2xs",
+        }
+    
+    ]
+
+
+        // for play function
+       const isPlayMusic = () => {
+            isPlaying = true;
+            music.play();
+            // music.pause();
+            playMusic.classList.replace('fa-play', 'fa-pause');
+            playMusic.classList.add('box-shadow-play');
+            musicCoverImg.classList.add('music-rotate');
+        };
+
+        // for pause function
+        const isPauseMusic = () => {
+            isPlaying = false;
+            music.pause();
+            playMusic.classList.replace('fa-pause', 'fa-play');
+            playMusic.classList.remove('box-shadow-play');
+            musicCoverImg.classList.remove('music-rotate');
+        };
+
+
+        play.addEventListener('click', () => {
+            (isPlaying) ? isPauseMusic() : isPlayMusic();
+        });
+
+
+        // changing music data
+        const loadSong = (songs) => {
+            musicName.textContent = songs.title;
+            artist.textContent = songs.artist;
+            music.src = "music/"+songs.name+".mp3";
+            musicCoverImg.src = "img/"+songs.name+".jpg";
+
+        };
+
+        loadSong(songs[0]);
+        songIndex = 0;
+
+        const nextSong = () => {
+            songIndex = (songIndex + 1) % songs.length;
+            loadSong(songs[songIndex]);
+            isPlayMusic()
+        }
+        const prevSong = () => {
+            songIndex = (songIndex - 1 + songs.length) % songs.length;
+            loadSong(songs[songIndex]);
+            isPlayMusic()
+        }
+
+
+        // ============ progress js work ============
+
+        music.addEventListener('timeupdate', (event) => {
+            const { currentTime, duration } = event.srcElement;
+
+            let progress_time = (currentTime / duration) * 100;
+            progress.style.width = `${progress_time}%`;
+
+            // music duration update
+
+            let min_duration = Math.floor(duration / 60);
+            let sec_duration = Math.floor(duration % 60);
+            // console.log(min_duration);
+            // console.log(sec_duration);
+
+            let tot_duration = `${min_duration}:${sec_duration}`;
+            if(duration){
+                total_duration.textContent = `${tot_duration}`;
+            }
+
+
+            // current duration update
+
+            let min_currentTime = Math.floor(currentTime / 60);
+            let sec_currentTime = Math.floor(currentTime % 60);
+
+            if(sec_currentTime < 10){
+                sec_currentTime = `0${sec_currentTime}`;
+            }
+
+            let tot_currentTime = `${min_currentTime}:${sec_currentTime}`;
+            current_time.textContent = `${tot_currentTime}`;
+        
+        });
+
+        // progress onclick functionality
+        progress_div.addEventListener('click', (event) => {
+            // console.log(event);
+            const {duration} = music;
+
+            let move_progress = (event.offsetX / event.srcElement.clientWidth) * duration;
+            // console.log(move_progress);
+
+            music.currentTime = move_progress;
+        })
+
+        // while music end next song start automatically 
+        music.addEventListener('ended', nextSong);
+
+
+        next.addEventListener('click', nextSong);
+        prev.addEventListener('click', prevSong);
+
+
+        // darkmode js
+
+        darkMode.addEventListener('click', () => {
+            // let result = moon.replace("fa-moon", "fa-lightbulb-on");
+            wholeBody.classList.toggle('add-dark');
+        })
+
+    
+
+
+       
+
+        // =========================== temprature converter Javascript start ===========================
+        // const calculateTemp = () => {
+        //     const numberTemp = document.getElementById('temp').value;
+        //     const tempSelected = document.getElementById('temp_diff');
+        //     const valueTemp = temp_diff.options[tempSelected.selectedIndex].value;
+        //     console.log(numberTemp);
+
+
+        //     const celToFah = (myCels) => {
+        //         let fahrenheit = Math.round((myCels * 9/5) + 32);
+        //         return fahrenheit;
+        //     }
+        //     const fehToCel = (myFerh) => {
+        //         let celsius = Math.round((myFerh - 32) * 5/9);
+        //         return celsius;
+        //     }
+
+
+        //     let result;
+
+        //     if(valueTemp == 'cel'){
+        //         result = celToFah(numberTemp);
+        //         document.getElementById('resultContainer').innerHTML = `= ${result}°Fahrenheit`;
+        //     }else{
+        //          result = fehToCel(numberTemp);
+        //         document.getElementById('resultContainer').innerHTML = `= ${result}°Celsius`;
+        //     }
+
+        // }
+        // =========================== temprature converter Javascript end ===========================
+
+
+        // ============ Placeholder Image generator ============
+
+            // const select = document.querySelector('select');
+            // const inputAll = document.querySelectorAll('input')
+            // let myImg = document.querySelector('img');
+            // let textArea = document.querySelector('textarea');
+            // // let download = document.querySelector('download');
+
+            // console.log(inputAll);
+
+            // let urlObj = {};
+
+            // const removeHashTag = (str) => {
+            //     return str.replace("#", "")
+            // }
+
+            // const addPlus = (str) => {
+            //     return str.split(" ").join("+");
+            // }
+
+
+            // const createImgPath = () => { 
+
+            //     urlObj.size = select.value;
+            //     urlObj.text = addPlus(inputAll[0].value);
+            //     urlObj.bgClr = removeHashTag(inputAll[1].value);
+            //     urlObj.txtClr = removeHashTag(inputAll[2].value);
+
+            //    let urlPath = `http://via.placeholder.com/${urlObj.size}/${urlObj.bgClr}/${urlObj.txtClr}?text=${urlObj.text}`
+
+            //     myImg.src = urlPath;
+            //     textArea.value = urlPath;
+
+            //     textArea.focus();
+            //     textArea.select();
+
+
+            //     navigator.clipboard.writeText(textArea.value)
+            //     .then(() => {
+            //         console.log('Text copied to clipboard');
+            //     })
+            //     .catch(err => {
+            //         console.error('Error copying text: ', err);
+            //     });
+    
+            // }
+
+            // inputAll.forEach((currElem) => currElem.addEventListener('click', createImgPath));
+            // select.addEventListener('change', createImgPath)
+
+        // ============ Placeholder Image generator ============
+       
+    </script>
+
+</body>
+</html>
